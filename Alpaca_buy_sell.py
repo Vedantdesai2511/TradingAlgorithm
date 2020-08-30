@@ -126,3 +126,58 @@ class AlpacaBuySell:
             take_profit=dict(limit_price=limit),
             stop_loss=dict(stop_price=stop)
         )
+
+    def market_sell(self):  # Redundant function due to some dependancy I did not remove it but you can use short
+        # sell instead of this function
+        api = tradeapi.REST(
+            base_url=self.base_url,
+            key_id=self.api_key_id,
+            secret_key=self.api_secret
+        )
+        # place market order along with take profit and stop limit order
+        api_sell = api.submit_order(
+            symbol=self.symbol,
+            qty=self.qty,
+            side='sell',
+            type='market',
+            time_in_force=self.time_in_force,
+            # limit_price = limit
+        )
+
+        return api_sell
+
+    def short_sell(self):
+        api = tradeapi.REST(
+            base_url=self.base_url,
+            key_id=self.api_key_id,
+            secret_key=self.api_secret
+        )
+        # place market order along with take profit and stop limit order
+        api_sell = api.submit_order(
+            symbol=self.symbol,
+            qty=self.qty,
+            side='sell',
+            type='market',
+            time_in_force=self.time_in_force,
+            # limit_price = limit
+        )
+
+        return api_sell
+
+    def limit_sell(self, limit):
+        api = tradeapi.REST(
+            base_url=self.base_url,
+            key_id=self.api_key_id,
+            secret_key=self.api_secret
+        )
+        # place market order along with take profit and stop limit order
+        api_sell = api.submit_order(
+            symbol=self.symbol,
+            qty=self.qty,
+            side='sell',
+            type='limit',
+            time_in_force=self.time_in_force,
+            limit_price=limit
+        )
+
+        return api_sell
