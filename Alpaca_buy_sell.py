@@ -51,3 +51,78 @@ class AlpacaBuySell:
 
         return api_buy
 
+    def buy_and_stop_order(self, stop):  # Place buy with stop loss order
+        api = tradeapi.REST(
+            base_url=self.base_url,
+            key_id=self.api_key_id,
+            secret_key=self.api_secret
+        )
+        # place market order along with take profit and stop limit order
+        api_buy = api.submit_order(
+            symbol=self.symbol,
+            qty=self.qty,
+            side='buy',
+            type=self.order_type,
+            time_in_force=self.time_in_force,
+            order_class='oto',
+            stop_loss=dict(stop_price=stop)
+        )
+
+        return api_buy
+
+    def stop_limit_buy_order(self, limit_price, stop_price):
+        api = tradeapi.REST(
+            base_url=self.base_url,
+            key_id=self.api_key_id,
+            secret_key=self.api_secret
+        )
+        # place market order along with take profit and stop limit order
+        api_buy = api.submit_order(
+            symbol=self.symbol,
+            qty=self.qty,
+            side='buy',
+            type=self.order_type,
+            time_in_force=self.time_in_force,
+            order_class='oto',
+            stop_loss=dict(stop_price=stop_price, limit_price=limit_price)
+        )
+
+    def stop_limit_sell_order(self, limit, stop):  # place market sell order take profit and stop limit order
+        api = tradeapi.REST(
+            base_url=self.base_url,
+            key_id=self.api_key_id,
+            secret_key=self.api_secret
+        )
+        # place market sell order take profit and stop limit order
+
+        api_stop_limit_sell = api.submit_order(
+            symbol=self.symbol,
+            qty=self.qty,
+            side='sell',
+            type='limit',
+            time_in_force=self.time_in_force,
+            order_class='oco',
+            take_profit=dict(limit_price=limit),
+            stop_loss=dict(stop_price=stop)
+        )
+
+        return api_stop_limit_sell
+
+    def stop_limit_buy_order_without_making_a_market_buy(self, limit, stop):  # Place stop and limit (OCO) orders
+        # without placing a buy order for this to work one must have a open naked buy order
+        api = tradeapi.REST(
+            base_url=self.base_url,
+            key_id=self.api_key_id,
+            secret_key=self.api_secret
+        )
+
+        api_buy = api.submit_order(
+            symbol=self.symbol,
+            qty=self.qty,
+            side='buy',
+            type='limit',
+            time_in_force=self.time_in_force,
+            order_class='oco',
+            take_profit=dict(limit_price=limit),
+            stop_loss=dict(stop_price=stop)
+        )
