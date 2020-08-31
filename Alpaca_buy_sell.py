@@ -177,13 +177,7 @@ class AlpacaBuySell:
         """
         Get current open positions of the portfolio
         """
-        api = tradeapi.REST(
-            base_url=self.base_url,
-            key_id=self.api_key_id,
-            secret_key=self.api_secret
-        )
-
-        positions = api.list_positions()
+        positions = AlpacaBuySell(self.symbol).api_call().list_positions()
 
         for idx, p in enumerate(positions):
             if positions[idx].symbol != self.symbol:
