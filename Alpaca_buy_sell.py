@@ -173,5 +173,22 @@ class AlpacaBuySell:
 
         return api_sell
 
+    def current_positions(self):
+        """
+        Get current open positions of the portfolio
+        """
+        api = tradeapi.REST(
+            base_url=self.base_url,
+            key_id=self.api_key_id,
+            secret_key=self.api_secret
+        )
+
+        positions = api.list_positions()
+
+        for idx, p in enumerate(positions):
+            if positions[idx].symbol != self.symbol:
+                return False
+            else:
+                return True
 
 # AlpacaBuySell("ROKU").naked_buy_order()
