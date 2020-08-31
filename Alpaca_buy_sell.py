@@ -23,8 +23,10 @@ class AlpacaBuySell:
 
         return api
 
-    def naked_buy_order(self):  # Place a naked buy order
-        # lace a naked buy order i.e. place a market buy order without any limit or stop sell order
+    def naked_buy_order(self):
+        """
+        place a naked buy order i.e. place a market buy order without any limit or stop sell order
+        """
         naked_buy_order = AlpacaBuySell(self.symbol).api_call().submit_order(
             symbol=self.symbol,
             qty=self.qty,
@@ -36,8 +38,11 @@ class AlpacaBuySell:
 
         return naked_buy_order
 
-    def buy(self, limit, stop):  # Place market buy order with limit and stop (OCO) orders
-        #  place market order along with take profit and stop limit order
+    def buy(self, limit, stop):
+        """
+        Place market buy order with limit and stop (OCO) orders
+        i.e. place market order along with take profit and stop limit order
+        """
         api_buy = AlpacaBuySell(self.symbol).api_call().submit_order(
             symbol=self.symbol,
             qty=self.qty,
@@ -51,14 +56,11 @@ class AlpacaBuySell:
 
         return api_buy
 
-    def buy_and_stop_order(self, stop):  # Place buy with stop loss order
-        api = tradeapi.REST(
-            base_url=self.base_url,
-            key_id=self.api_key_id,
-            secret_key=self.api_secret
-        )
-        # place market order along with take profit and stop limit order
-        api_buy = api.submit_order(
+    def buy_and_stop_order(self, stop):
+        """
+        Place buy with stop loss order
+        """
+        api_buy = AlpacaBuySell(self.symbol).api_call().submit_order(
             symbol=self.symbol,
             qty=self.qty,
             side='buy',
@@ -71,13 +73,10 @@ class AlpacaBuySell:
         return api_buy
 
     def stop_limit_buy_order(self, limit_price, stop_price):
-        api = tradeapi.REST(
-            base_url=self.base_url,
-            key_id=self.api_key_id,
-            secret_key=self.api_secret
-        )
-        # place market order along with take profit and stop limit order
-        api_buy = api.submit_order(
+        """
+        place market buy order along with take profit and stop limit order
+        """
+        api_buy = AlpacaBuySell(self.symbol).api_call().submit_order(
             symbol=self.symbol,
             qty=self.qty,
             side='buy',
@@ -87,15 +86,13 @@ class AlpacaBuySell:
             stop_loss=dict(stop_price=stop_price, limit_price=limit_price)
         )
 
-    def stop_limit_sell_order(self, limit, stop):  # place market sell order take profit and stop limit order
-        api = tradeapi.REST(
-            base_url=self.base_url,
-            key_id=self.api_key_id,
-            secret_key=self.api_secret
-        )
-        # place market sell order take profit and stop limit order
+        return api_buy
 
-        api_stop_limit_sell = api.submit_order(
+    def stop_limit_sell_order(self, limit, stop):
+        """
+        place market sell order take profit and stop limit order
+        """
+        api_stop_limit_sell = AlpacaBuySell(self.symbol).api_call().submit_order(
             symbol=self.symbol,
             qty=self.qty,
             side='sell',
@@ -108,8 +105,11 @@ class AlpacaBuySell:
 
         return api_stop_limit_sell
 
-    def stop_limit_buy_order_without_making_a_market_buy(self, limit, stop):  # Place stop and limit (OCO) orders
-        # without placing a buy order for this to work one must have a open naked buy order
+    def stop_limit_buy_order_without_making_a_market_buy(self, limit, stop):
+        """
+        Place stop and limit (OCO) orders
+        without placing a buy order for this to work one must have a open naked buy order
+        """
         api = tradeapi.REST(
             base_url=self.base_url,
             key_id=self.api_key_id,
@@ -127,51 +127,42 @@ class AlpacaBuySell:
             stop_loss=dict(stop_price=stop)
         )
 
-    def market_sell(self):  # Redundant function due to some dependancy I did not remove it but you can use short
-        # sell instead of this function
-        api = tradeapi.REST(
-            base_url=self.base_url,
-            key_id=self.api_key_id,
-            secret_key=self.api_secret
-        )
-        # place market order along with take profit and stop limit order
-        api_sell = api.submit_order(
+        return api_buy
+
+    def market_sell(self):
+        """
+        Place market sell order - to close out the long position in particular stock
+        """
+        api_sell = AlpacaBuySell(self.symbol).api_call().submit_order(
             symbol=self.symbol,
             qty=self.qty,
             side='sell',
             type='market',
             time_in_force=self.time_in_force,
-            # limit_price = limit
         )
 
         return api_sell
 
     def short_sell(self):
-        api = tradeapi.REST(
-            base_url=self.base_url,
-            key_id=self.api_key_id,
-            secret_key=self.api_secret
-        )
-        # place market order along with take profit and stop limit order
-        api_sell = api.submit_order(
+        """
+        Place short sell order on the given stock
+        Caution: If the broken does not allow shorting on the given stock you will not be able to short that stock.
+        """
+        api_sell = AlpacaBuySell(self.symbol).api_call().submit_order(
             symbol=self.symbol,
             qty=self.qty,
             side='sell',
             type='market',
             time_in_force=self.time_in_force,
-            # limit_price = limit
         )
 
         return api_sell
 
     def limit_sell(self, limit):
-        api = tradeapi.REST(
-            base_url=self.base_url,
-            key_id=self.api_key_id,
-            secret_key=self.api_secret
-        )
-        # place market order along with take profit and stop limit order
-        api_sell = api.submit_order(
+        """
+        place market order along with take profit and stop limit order
+        """
+        api_sell = AlpacaBuySell(self.symbol).api_call().submit_order(
             symbol=self.symbol,
             qty=self.qty,
             side='sell',
@@ -181,3 +172,6 @@ class AlpacaBuySell:
         )
 
         return api_sell
+
+
+# AlpacaBuySell("ROKU").naked_buy_order()
