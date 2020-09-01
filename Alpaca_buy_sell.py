@@ -228,4 +228,24 @@ class AlpacaBuySell:
                 if status.status == 'rejected':
                     print("ORDER FAILED: Your Order was Rejected!!!")
 
+    def liqidate_position_of_a_stock(self):
+        api = tradeapi.REST(
+            base_url=self.base_url,
+            key_id=self.api_key_id,
+            secret_key=self.api_secret
+        )
+
+        pos = api.list_positions()
+        # print(pos[0].symbol)
+        for idx, p in enumerate(pos):
+            if pos[idx].symbol == self.symbol:
+                print("Element Exists")
+                print(pos[idx].symbol)
+                print(pos[idx].side)
+                print(pos[idx].qty)
+                if pos[idx].side == "long":
+                    print("I am here")
+                    AlpacaBuySell(pos[idx].symbol, qty=pos[idx].qty).market_sell()
+
+
 # AlpacaBuySell("ROKU").naked_buy_order()
