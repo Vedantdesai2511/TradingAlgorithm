@@ -229,6 +229,12 @@ class AlpacaBuySell:
                     print("ORDER FAILED: Your Order was Rejected!!!")
 
     def liqidate_position_of_a_stock(self):
+
+        """
+        Unlike above given function this function has capability to liquidate anyone stock at a time rather than
+        liquidating all the positions in the portfolio
+        """
+
         api = tradeapi.REST(
             base_url=self.base_url,
             key_id=self.api_key_id,
@@ -250,6 +256,11 @@ class AlpacaBuySell:
                     AlpacaBuySell(pos[idx].symbol, qty=self.qty).naked_buy_order()
 
     def cancel_orders_and_liquidate_the_given_stock(self):
+
+        """
+        This function cancels open positions attached with the particular share and than liquidate the position
+        """
+
         api = tradeapi.REST(
             base_url=self.base_url,
             key_id=self.api_key_id,
