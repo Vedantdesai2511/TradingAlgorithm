@@ -191,11 +191,7 @@ class AlpacaBuySell:
         got from the reference from internet and modified the function a bit
         """
 
-        api = tradeapi.REST(
-            base_url=self.base_url,
-            key_id=self.api_key_id,
-            secret_key=self.api_secret
-        )
+        api = AlpacaBuySell(self.symbol).api_call()
 
         orders = api.list_orders(status='open')
         positions = api.list_positions()
@@ -235,13 +231,7 @@ class AlpacaBuySell:
         liquidating all the positions in the portfolio
         """
 
-        api = tradeapi.REST(
-            base_url=self.base_url,
-            key_id=self.api_key_id,
-            secret_key=self.api_secret
-        )
-
-        pos = api.list_positions()
+        pos = AlpacaBuySell(self.symbol).api_call().list_positions()
         # print(pos[0].symbol)
         for idx, p in enumerate(pos):
             if pos[idx].symbol == self.symbol:
@@ -261,11 +251,7 @@ class AlpacaBuySell:
         This function cancels open positions attached with the particular share and than liquidate the position
         """
 
-        api = tradeapi.REST(
-            base_url=self.base_url,
-            key_id=self.api_key_id,
-            secret_key=self.api_secret
-        )
+        api = AlpacaBuySell(self.symbol).api_call()
 
         order_list_for_the_give_stock = list()
 
