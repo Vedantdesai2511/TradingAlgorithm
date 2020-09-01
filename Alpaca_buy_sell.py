@@ -183,6 +183,7 @@ class AlpacaBuySell:
             if positions[idx].symbol != self.symbol:
                 return False
             else:
+
                 return True
 
 # AlpacaBuySell("ROKU").naked_buy_order()
