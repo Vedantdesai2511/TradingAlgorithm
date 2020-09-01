@@ -249,5 +249,34 @@ class AlpacaBuySell:
                 elif pos[idx].side == "short":
                     AlpacaBuySell(pos[idx].symbol, qty=self.qty).naked_buy_order()
 
+    def cancel_orders_and_liquidate_the_given_stock(self):
+        api = tradeapi.REST(
+            base_url=self.base_url,
+            key_id=self.api_key_id,
+            secret_key=self.api_secret
+        )
+
+        order_list_for_the_give_stock = list()
+
+        list_orders_ = api.list_orders()
+        for i in list_orders_:
+            if i.symbol == self.symbol:
+                order_list_for_the_give_stock.append(i.id)
+                # print(i.id[-1])
+
+        print(order_list_for_the_give_stock)
+        api.cancel_order(order_list_for_the_give_stock[-1])
+        # AlpacaBuySell(self.symbol).liqidate_position_of_a_stock()
+
+        pos = api.list_positions()
+        for idx, p in enumerate(pos):
+            if pos[idx].symbol == self.symbol:
+                print("Element Exists")
+                print(pos[idx].symbol)
+                print(pos[idx].side)
+                # print(pos[idx].qty)
+                if pos[idx].side == "long":
+                    print("I am here")
+                    AlpacaBuySell(pos[idx].symbol, qty=self.qty).market_sell()
 
 # AlpacaBuySell("ROKU").naked_buy_order()
