@@ -246,6 +246,8 @@ class AlpacaBuySell:
                 if pos[idx].side == "long":
                     print("I am here")
                     AlpacaBuySell(pos[idx].symbol, qty=pos[idx].qty).market_sell()
+                elif pos[idx].side == "short":
+                    AlpacaBuySell(pos[idx].symbol, qty=self.qty).naked_buy_order()
 
 
 # AlpacaBuySell("ROKU").naked_buy_order()
