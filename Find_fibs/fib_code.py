@@ -1,10 +1,13 @@
 class UpperFibFindABCD:
     def __init__(self):
-        # print("Hello")
         self.local_minimum_a = 0
-        # print(self.local_minimum_a)
 
     def find_a(self, z):
+        """
+        This side takes tick data as an in put and finds the fractal low in the data given
+        input: array of five flots
+        output: Value of fractal low
+        """
         i = 2
         flag_a = 0
         # print("Yo 1")
