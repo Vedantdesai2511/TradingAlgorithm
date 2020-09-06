@@ -18,6 +18,7 @@ class UpperFibFindABCD:
             # low minimum number of points needed is 5
             return self.local_minimum_a, flag_a
 
+        # ===== main logic =====
         # find fractal low (below given code)
 
         if ((z[i]) - (z[i-1]) < 0) and ((z[i]) - (z[i-2]) < 0):
@@ -28,22 +29,31 @@ class UpperFibFindABCD:
 
         return self.local_minimum_a, flag_a
 
-    def find_b(self, z):
+    def find_b(self, z, local_minimum_upfib_a):
         """
         Find fractal low after finding fractal high in previous function to mark down 'B' in fibonacci ABCD swing
         """
-        i = 2
+        i = 2  # initialize a variable to 2 for the calculation of fractal high (calculation can be seen in the mail
+        # log part of the code
         level2 = 0  # To make level 2 in the fibonacci ABCD swing
         upper_level = 0  # to find upper level in the fibonacci ABCD swing
         flag_a = 1  # flag for code to know where it is at the moment
         if len(z) > 5:  # if the input z array is bigger than 5 then consider only last five elementa of the array
             z = z[-5:]
         else:
-            if ((z[i]) - (z[i-1]) > 0) and ((z[i]) - (z[i-2]) > 0):
-                if ((z[i+1]) - (z[i]) < 0) and ((z[i+2]) - (z[i]) < 0):
-                    self.local_maximum_b = z[i]
-                    print(self.local_maximum_b)
-                    flag_a = 2
+            pass
 
-                    return self.local_maximum_b, level2, upper_level, flag_a
+        # ===== main logic =====
+
+        if ((z[i]) - (z[i-1]) > 0) and ((z[i]) - (z[i-2]) > 0):
+            if ((z[i+1]) - (z[i]) < 0) and ((z[i+2]) - (z[i]) < 0):
+                self.local_maximum_b = z[i]
+                print(self.local_maximum_b)
+                flag_a = 2
+
+                diff = self.local_maximum_b - local_minimum_upfib_a
+                level2 = self.local_maximum_b - (0.5 * diff)
+                upper_level = local_minimum_upfib_a + (1.618 * diff)
+
+                return self.local_maximum_b, level2, upper_level, flag_a
         return self.local_maximum_b, level2, upper_level, flag_a
