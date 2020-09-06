@@ -29,20 +29,18 @@ class UpperFibFindABCD:
         return self.local_minimum_a, flag_a
 
     def find_b(self, z):
+        """
+        Find fractal low after finding fractal high in previous function to mark down 'B' in fibonacci ABCD swing
+        """
         i = 2
-        level2 = 0
-        upper_level = 0
-        flag_a = 1
-        # print("Yo")
-        if len(z) > 5:
+        level2 = 0  # To make level 2 in the fibonacci ABCD swing
+        upper_level = 0  # to find upper level in the fibonacci ABCD swing
+        flag_a = 1  # flag for code to know where it is at the moment
+        if len(z) > 5:  # if the input z array is bigger than 5 then consider only last five elementa of the array
             z = z[-5:]
         else:
-            # print("Hmmm")
-            pass
-
             if ((z[i]) - (z[i-1]) > 0) and ((z[i]) - (z[i-2]) > 0):
                 if ((z[i+1]) - (z[i]) < 0) and ((z[i+2]) - (z[i]) < 0):
-                    # print("Found up fib b")
                     self.local_maximum_b = z[i]
                     print(self.local_maximum_b)
                     flag_a = 2
