@@ -17,6 +17,10 @@ class UpperFibFindABCD:
             # low minimum number of points needed is 5
             return self.local_minimum_a, flag_a
 
-        # TODO: code to find fractal low
+        if ((z[i]) - (z[i-1]) < 0) and ((z[i]) - (z[i-2]) < 0):
+            if ((z[i+1]) - (z[i]) > 0) and ((z[i+2]) - (z[i]) > 0):
+                self.local_minimum_a = z[i]
+                flag_a = 1
+                return self.local_minimum_a, flag_a
 
         return self.local_minimum_a, flag_a
