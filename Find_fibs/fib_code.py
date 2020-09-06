@@ -52,7 +52,9 @@ class UpperFibFindABCD:
                 flag_a = 2
 
                 diff = self.local_maximum_b - local_minimum_upfib_a
-                level2 = self.local_maximum_b - (0.5 * diff)
+                level2 = self.local_maximum_b - (0.5 * diff)  # TODO: Have to change 0.786 to 0.618 and give option
+                # TODO: to user to do this change according to risk calculation
+                # TODO: eventually make algorithm to calculae risk and adjust the value by it self
                 upper_level = local_minimum_upfib_a + (1.618 * diff)
 
                 return self.local_maximum_b, level2, upper_level, flag_a
