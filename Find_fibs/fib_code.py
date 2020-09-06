@@ -14,7 +14,7 @@ class UpperFibFindABCD:
         if len(z) >= 5:  # if the length of input array is less grater than 5 use only last four terms of the array
             # for the analysis
             z = z[-5:]
-        elif len(z) < 5:  # if the length  pf the input array is less than five do no proced as to find the fractal
+        elif len(z) < 5:  # if the length  of the input array is less than five do no proceed as to find the fractal
             # low minimum number of points needed is 5
             return self.local_minimum_a, flag_a
 
@@ -38,30 +38,30 @@ class UpperFibFindABCD:
         level2 = 0  # To make level 2 in the fibonacci ABCD swing
         upper_level = 0  # to find upper level in the fibonacci ABCD swing
         flag_a = 1  # flag for code to know where it is at the moment
-        if len(z) > 5:  # if the input z array is bigger than 5 then consider only last five elementa of the array
+        if len(z) > 5:  # if the input z array is bigger than 5 then consider only last five elements of the array
             z = z[-5:]
-        elif len(z) < 5:
-            pass
-        else:
-            # ===== main logic =====
+        elif len(z) < 5:  # if the length  of the input array is less than five do no proceed as to find the fractal
+            # low minimum number of points needed is 5
+            return self.local_maximum_b, level2, upper_level, flag_a
 
-            if z[-1] > (local_minimum_upfib_a + (volatility * 1.5)):  # This if statement is to avoid very small fibs
-                # tobe detected by the algorithm, If algorithm detects very small fibs it becomes difficult or
-                # impossible in code case to put limit and stop order to make sense (i.e. algo cannot put oco because
-                # the range is too small)
-                if ((z[i]) - (z[i-1]) > 0) and ((z[i]) - (z[i-2]) > 0):
-                    if ((z[i+1]) - (z[i]) < 0) and ((z[i+2]) - (z[i]) < 0):
-                        self.local_maximum_b = z[i]
-                        print(self.local_maximum_b)
-                        flag_a = 2
+        # ===== main logic =====
 
-                        diff = self.local_maximum_b - local_minimum_upfib_a
-                        level2 = self.local_maximum_b - (0.5 * diff)  # TODO: Have to change 0.786 to 0.618 and give option
-                        # TODO: to user to do this change according to risk calculation
-                        # TODO: eventually make algorithm to calculae risk and adjust the value by it self
-                        upper_level = local_minimum_upfib_a + (1.618 * diff)
+        if z[-1] > (local_minimum_upfib_a + (volatility * 1.5)):  # This if statement is to avoid very small fibs
+            # tobe detected by the algorithm, If algorithm detects very small fibs it becomes difficult or
+            # impossible in code case to put limit and stop order to make sense (i.e. algo cannot put oco because
+            # the range is too small)
+            if ((z[i]) - (z[i-1]) > 0) and ((z[i]) - (z[i-2]) > 0):
+                if ((z[i+1]) - (z[i]) < 0) and ((z[i+2]) - (z[i]) < 0):
+                    self.local_maximum_b = z[i]
+                    print(self.local_maximum_b)
+                    flag_a = 2
 
-                        return self.local_maximum_b, level2, upper_level, flag_a
-                return self.local_maximum_b, level2, upper_level, flag_a
+                    diff = self.local_maximum_b - local_minimum_upfib_a
+                    level2 = self.local_maximum_b - (0.5 * diff)  # TODO: Have to change 0.786 to 0.618 and give option
+                    # TODO: to user to do this change according to risk calculation
+                    # TODO: eventually make algorithm to calculae risk and adjust the value by it self
+                    upper_level = local_minimum_upfib_a + (1.618 * diff)
+
+                    return self.local_maximum_b, level2, upper_level, flag_a
             return self.local_maximum_b, level2, upper_level, flag_a
         return self.local_maximum_b, level2, upper_level, flag_a
