@@ -91,6 +91,10 @@ class UpperFibFindABCD:
                     self.local_minimum_C = z[i]
                     flag_a = 3
 
+                elif z[i] < local_minimum:  # if value goes below B in A-B boundary the fib is broken - flag_a = 0
+                    # print("Fib broke")
+                    flag_a = 0
+
                 return self.local_minimum_C, flag_a
             return self.local_minimum_C, flag_a
         return self.local_minimum_C, flag_a
