@@ -9,7 +9,7 @@ class UpperFibFindABCD:
         """
         This side takes tick data as an in put and finds the fractal low in the data given
         input: array of five flots
-        return: float (Value of fractal low)
+        return: float (Value of fractal low) amd int (flag)
         """
         i = 2
         flag_a = 0
@@ -35,11 +35,11 @@ class UpperFibFindABCD:
         """
         Find fractal low after finding fractal high in previous function to mark down 'B' in fibonacci ABCD swing
         """
-        i = 2  # initialize a variable to 2 for the calculation of fractal high (calculation can be seen in the mail
+        i = 2  # initialize a variable to 2 for the calculation of fractal high (calculation can be seen in the main
         # log part of the code
         level2 = 0  # To make level 2 in the fibonacci ABCD swing
         upper_level = 0  # to find upper level in the fibonacci ABCD swing
-        flag_a = 1  # flag for code to know where it is at the moment
+        flag_a = 1  # flag for algorithm to know where it is at the moment
         if len(z) > 5:  # if the input z array is bigger than 5 then consider only last five elements of the array
             z = z[-5:]
         elif len(z) < 5:  # if the length  of the input array is less than five do no proceed as to find the fractal
@@ -69,12 +69,18 @@ class UpperFibFindABCD:
         return self.local_maximum_b, level2, upper_level, flag_a
 
     def find_c(self, z, level2, local_minimum):
-        i = 2
-        flag_a = 2
+        """
+        This side takes tick data as an in put and finds the fractal low in between AB boundery in up ABCD swing in
+        the data given
+        input: array of five flots
+        return: float (Value of fractal low)
+        """
+        i = 2  # initialize a variable to 2 for the calculation of fractal low
+        flag_a = 2  # flag for algorithm to know where it is at the moment
 
         if ((z[i]) - (z[i-1]) < 0) and ((z[i]) - (z[i-2]) < 0):
             if ((z[i+1]) - (z[i]) > 0) and ((z[i+2]) - (z[i]) > 0):
-                if level2 > z[i] > local_minimum:
+                if level2 > z[i] > local_minimum:  # find fractal low only if current value is in between A-B boundry
                     self.local_minimum_C = z[i]
                     flag_a = 3
 
