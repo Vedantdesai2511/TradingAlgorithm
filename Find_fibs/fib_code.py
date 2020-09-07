@@ -78,9 +78,16 @@ class UpperFibFindABCD:
         i = 2  # initialize a variable to 2 for the calculation of fractal low
         flag_a = 2  # flag for algorithm to know where it is at the moment
 
+        if self.c_above_b_flag == 1:  # function to handle situation when value goes above B boundary without making
+            # fractal low in between A-B boundary
+            print("Current price was above a B")
+            print("will go to 1.270")
+            flag_a = 0
+            return self.local_minimum_C, flag_a
+
         if ((z[i]) - (z[i-1]) < 0) and ((z[i]) - (z[i-2]) < 0):
             if ((z[i+1]) - (z[i]) > 0) and ((z[i+2]) - (z[i]) > 0):
-                if level2 > z[i] > local_minimum:  # find fractal low only if current value is in between A-B boundry
+                if level2 > z[i] > local_minimum:  # find fractal low only if current value is in between A-B boundary
                     self.local_minimum_C = z[i]
                     flag_a = 3
 
