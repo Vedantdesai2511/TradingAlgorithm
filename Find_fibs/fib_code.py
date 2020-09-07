@@ -70,19 +70,12 @@ class UpperFibFindABCD:
 
     def find_c(self, z, level2, local_minimum):
         i = 2
-        # print("hullllaaa")
         flag_a = 2
-        # if len(z) > 5:
-        #     z = z[-5:]
-        # elif len(z) < 5:
-        #     return self.local_minimum_a, flag_a
 
         if ((z[i]) - (z[i-1]) < 0) and ((z[i]) - (z[i-2]) < 0):
             if ((z[i+1]) - (z[i]) > 0) and ((z[i+2]) - (z[i]) > 0):
                 if level2 > z[i] > local_minimum:
                     self.local_minimum_C = z[i]
-                    # print("Found up fib c") ######################
-                    # print("C found") ######################
                     flag_a = 3
 
                 return self.local_minimum_C, flag_a
