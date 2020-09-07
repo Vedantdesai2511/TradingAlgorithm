@@ -2,12 +2,14 @@ class UpperFibFindABCD:
     def __init__(self):
         self.local_minimum_a = 0
         self.local_maximum_b = 0
+        self.local_minimum_C = 0
+        self.c_above_b_flag = 0
 
     def find_a(self, z):
         """
         This side takes tick data as an in put and finds the fractal low in the data given
         input: array of five flots
-        output: Value of fractal low
+        return: float (Value of fractal low)
         """
         i = 2
         flag_a = 0
@@ -41,7 +43,7 @@ class UpperFibFindABCD:
         if len(z) > 5:  # if the input z array is bigger than 5 then consider only last five elements of the array
             z = z[-5:]
         elif len(z) < 5:  # if the length  of the input array is less than five do no proceed as to find the fractal
-            # low minimum number of points needed is 5
+            # low minimum number of points needed is 5,
             return self.local_maximum_b, level2, upper_level, flag_a
 
         # ===== main logic =====
@@ -65,3 +67,24 @@ class UpperFibFindABCD:
                     return self.local_maximum_b, level2, upper_level, flag_a
             return self.local_maximum_b, level2, upper_level, flag_a
         return self.local_maximum_b, level2, upper_level, flag_a
+
+    def find_c(self, z, level2, local_minimum):
+        i = 2
+        # print("hullllaaa")
+        flag_a = 2
+        # if len(z) > 5:
+        #     z = z[-5:]
+        # elif len(z) < 5:
+        #     return self.local_minimum_a, flag_a
+
+        if ((z[i]) - (z[i-1]) < 0) and ((z[i]) - (z[i-2]) < 0):
+            if ((z[i+1]) - (z[i]) > 0) and ((z[i+2]) - (z[i]) > 0):
+                if level2 > z[i] > local_minimum:
+                    self.local_minimum_C = z[i]
+                    # print("Found up fib c") ######################
+                    # print("C found") ######################
+                    flag_a = 3
+
+                return self.local_minimum_C, flag_a
+            return self.local_minimum_C, flag_a
+        return self.local_minimum_C, flag_a
