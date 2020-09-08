@@ -129,3 +129,12 @@ class UpperFibFindABCD:
                 return False
         else:
             return False
+
+    def find_d(self, current_price, level2, upper_level, local_minimum):
+        flag_a = 3
+        # print("Ummmm yo")
+        if upper_level > current_price > level2:
+            # print("no D found") ######################
+            print(current_price)
+
+        return flag_a
