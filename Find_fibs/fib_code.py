@@ -111,6 +111,13 @@ class UpperFibFindABCD:
         return self.local_minimum_C, flag_a
 
     def find_if_c_is_above_b(self, current_price, local_maximum, flag_a):
+        """
+        This function tracks value at each ticker and notifies if the value went above B without making fractal low
+        withing A-B boundary
+
+        return: bool (if value is above B or not)
+        """
+
         if flag_a == 2:
             if current_price > local_maximum:
                 print("Above B")
