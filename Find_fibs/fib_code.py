@@ -68,7 +68,7 @@ class UpperFibFindABCD:
             return self.local_maximum_b, level2, upper_level, flag_a
         return self.local_maximum_b, level2, upper_level, flag_a
 
-    def find_c(self, z, level2, local_minimum):
+    def find_c(self, z, level2, local_minimum, local_maximum):
         """
         This side takes tick data as an in put and finds the fractal low in between AB boundery in up ABCD swing in
         the data given
@@ -93,6 +93,17 @@ class UpperFibFindABCD:
 
                 elif z[i] < local_minimum:  # if value goes below B in A-B boundary the fib is broken - flag_a = 0
                     # print("Fib broke")
+                    flag_a = 0
+
+                # push below given two condition tomorrow and add local_maximum as an input to the function find_c
+                elif level2 < z[i] < local_maximum:
+                    pass
+                    # print("searching for a good c") ######################
+
+                elif z[i] > local_maximum:
+                    print("Above B")
+                    print("will go to 1.270")
+                    print("buy now")
                     flag_a = 0
 
                 return self.local_minimum_C, flag_a
