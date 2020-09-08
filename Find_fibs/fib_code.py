@@ -96,11 +96,11 @@ class UpperFibFindABCD:
                     flag_a = 0
 
                 # push below given two condition tomorrow and add local_maximum as an input to the function find_c
-                elif level2 < z[i] < local_maximum:
+                elif level2 < z[i] < local_maximum:  # no fractal low but the price is in between A-B boundary
                     pass
                     # print("searching for a good c") ######################
 
-                elif z[i] > local_maximum:
+                elif z[i] > local_maximum:  # price did not make fractal low and went above B the B boundary
                     print("Above B")
                     print("will go to 1.270")
                     print("buy now")
