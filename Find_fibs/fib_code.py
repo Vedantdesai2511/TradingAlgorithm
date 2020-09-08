@@ -4,6 +4,7 @@ class UpperFibFindABCD:
         self.local_maximum_b = 0
         self.local_minimum_C = 0
         self.c_above_b_flag = 0
+        self.local_maximum_d = 0
 
     def find_a(self, z):
         """
@@ -136,4 +137,10 @@ class UpperFibFindABCD:
         if upper_level > current_price > level2:
             # print("no D found") ######################
             print(current_price)
+        elif current_price > upper_level:
+            self.local_maximum_d = current_price
+            flag_a = 0
+            # print("fib completed") ######################
+            # print("Book the profit") ######################
+            return flag_a
         return flag_a
