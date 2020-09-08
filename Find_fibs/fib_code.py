@@ -109,3 +109,16 @@ class UpperFibFindABCD:
                 return self.local_minimum_C, flag_a
             return self.local_minimum_C, flag_a
         return self.local_minimum_C, flag_a
+
+    def find_if_c_is_above_b(self, current_price, local_maximum, flag_a):
+        if flag_a == 2:
+            if current_price > local_maximum:
+                print("Above B")
+                print("will go to 1.270")
+                print(f'buy now- current price: {current_price}')
+                self.c_above_b_flag = 1
+                return True
+            else:
+                return False
+        else:
+            return False
