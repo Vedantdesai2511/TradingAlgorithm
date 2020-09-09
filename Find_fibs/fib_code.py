@@ -132,8 +132,8 @@ class UpperFibFindABCD:
             return False
 
     def find_d(self, current_price, level2, upper_level, local_minimum):
-        flag_a = 3
-        # print("Ummmm yo")
+        flag_a = 3  # flag for algorithm to know where it is at the moment
+
         if upper_level > current_price > level2:
             # print("no D found") ######################
             print(current_price)
