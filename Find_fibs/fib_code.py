@@ -143,4 +143,11 @@ class UpperFibFindABCD:
             # print("fib completed") ######################
             # print("Book the profit") ######################
             return flag_a
+        elif level2 > current_price > local_minimum:
+            pass
+            # print("Looking for deeper c") ######################
+        elif local_minimum > current_price:
+            # print("fib broke D") ######################
+            flag_a = 0
+            return flag_a
         return flag_a
