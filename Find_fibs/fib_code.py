@@ -132,6 +132,14 @@ class UpperFibFindABCD:
             return False
 
     def find_d(self, current_price, level2, upper_level, local_minimum):
+
+        """
+
+        This function tracks value at each ticker and notifies what the value is doing after making fractal low
+        within the A-B boundry
+
+        """
+
         flag_a = 3  # flag for algorithm to know where it is at the moment
 
         if upper_level > current_price > level2:
@@ -140,12 +148,10 @@ class UpperFibFindABCD:
         elif current_price > upper_level:
             self.local_maximum_d = current_price
             flag_a = 0
-            # print("fib completed") ######################
-            # print("Book the profit") ######################
             return flag_a
         elif level2 > current_price > local_minimum:
-            pass
             # print("Looking for deeper c") ######################
+            pass
         elif local_minimum > current_price:
             # print("fib broke D") ######################
             flag_a = 0
