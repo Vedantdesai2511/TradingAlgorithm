@@ -9,7 +9,7 @@ class UpperFibFindABCD:
     def find_a(self, z):
         """
         This side takes tick data as an in put and finds the fractal low in the data given
-        input: array of five flots
+        input: array of five flats
         return: float (Value of fractal low) amd int (flag)
         """
         i = 2
@@ -167,6 +167,12 @@ class DownFibABCD:
         self.c_below_b_flag = 0
 
     def find_a(self, z):
+        """
+        This side takes tick data as an in put and finds the fractal high in the data given
+        input: array of five flats
+        return: float (Value of fractal low) amd int (flag)
+        """
+
         i = 2
         flag_a = 0
 
