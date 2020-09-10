@@ -134,10 +134,8 @@ class UpperFibFindABCD:
     def find_d(self, current_price, level2, upper_level, local_minimum):
 
         """
-
         This function tracks value at each ticker and notifies what the value is doing after making fractal low
-        within the A-B boundry
-
+        within the A-B boundary
         """
 
         flag_a = 3  # flag for algorithm to know where it is at the moment
@@ -157,3 +155,14 @@ class UpperFibFindABCD:
             flag_a = 0
             return flag_a
         return flag_a
+
+
+class DownFibABCD:
+
+    def __init__(self, ):
+        self.local_maximum_a = 0
+        self.local_minimum_b = 0
+        self.local_maximum_C = 0
+        self.local_minimum_d = 0
+        self.c_below_b_flag = 0
+
