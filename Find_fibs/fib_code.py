@@ -193,3 +193,50 @@ class DownFibABCD:
                 flag_a = 1
 
         return self.local_maximum_a, flag_a
+
+    # # print("hullllaaa")
+    # flag_a = 2
+    # # if len(z) > 5:
+    # #     z = z[-5:]
+    # # elif len(z) < 5:
+    # #     return self.local_minimum_a, flag_a
+    #
+    # if self.c_above_b_flag == 1:
+    #     print("Current price was above a B")
+    #     print("will go to 1.270")
+    #     flag_a = 0
+    #     return self.local_maximum_C, flag_a
+    #
+    # if ((z[i]) - (z[i - 1]) < 0) and ((z[i]) - (z[i - 2]) < 0):
+    #     if ((z[i + 1]) - (z[i]) > 0) and ((z[i + 2]) - (z[i]) > 0):
+    #         if level2 < z[i] < local_maximum:
+    #             self.local_maximum_C = z[i]
+    #             print("Found up fib c")
+    #             print("C found")
+    #             flag_a = 3
+    #
+    #         elif z[i] > local_maximum:
+    #             print("Fib broke")
+    #             flag_a = 0
+    #
+    #         elif level2 > z[i] > local_minimum:
+    #             print("searching for a good c")
+    #
+    #         elif z[i] < local_minimum:
+    #             print("Below B")
+    #             print("will go to 1.270")
+    #             print("sell now")
+    #             flag_a = 0
+    #
+    #         return self.local_minimum_C, flag_a
+    #     return self.local_minimum_C, flag_a
+    # return self.local_minimum_C, flag_a
+
+# UpperFibFindABCD().find_b([2,3,1,5,6], 0, 2)
+# t = UpperFibFindABCD()
+# t.find_a([1, 2, 3, 5, 6])
+# print(UpperFibFindABCD().find_a([1,2,3,1.5,5,6]))
+# [a, b] = UpperFibFindABCD().find_a([2,3,1,5,6])
+# UpperFibFindABCD().find_a([1, 2, 3, 5, 6])
+# print(a)
+# print(b)
