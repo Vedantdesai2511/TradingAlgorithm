@@ -173,13 +173,18 @@ class DownFibABCD:
         return: float (Value of fractal low) amd int (flag)
         """
 
-        i = 2
+        i = 2  # initialize a variable to 2 for the calculation of fractal high (calculation can be seen in the main
+        # log part of the code
         flag_a = 0
 
-        if len(z) >= 5:
+        if len(z) >= 5:  # if the length of input array is less grater than 5 use only last four terms of the array
+            # for the analysis
             z = z[-5:]
-        elif len(z) < 5:
+        elif len(z) < 5:  # if the length  of the input array is less than five do no proceed as to find the fractal
+            # low minimum number of points needed is 5
             return self.local_maximum_a, flag_a
+
+        # ===== main logic =====
 
         if ((z[i]) - (z[i-1]) > 0) and ((z[i]) - (z[i-2]) > 0):
             if ((z[i+1]) - (z[i]) < 0) and ((z[i+2]) - (z[i]) < 0):
