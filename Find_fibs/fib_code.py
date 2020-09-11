@@ -193,3 +193,28 @@ class DownFibABCD:
                 flag_a = 1
 
         return self.local_maximum_a, flag_a
+
+    def find_b(self, z, local_maximum_downfib_a):
+        flag_a = 1
+        if len(z) >= 5:
+            z = z[-5:]
+        elif len(z) < 5:
+            return self.local_minimum_b, flag_a
+        # flag = 5
+        level2 = 0
+        lower_level = 0
+        i = 2
+
+        if ((z[i]) - (z[i - 1]) < 0) and ((z[i]) - (z[i - 2]) < 0):
+            if ((z[i + 1]) - (z[i]) > 0) and ((z[i + 2]) - (z[i]) > 0):
+                # print("Found down fib b") #####################
+                self.local_minimum_b = z[i]
+                # print(self.local_minimum_b) #############
+                flag_a = 2
+
+                diff = local_maximum_downfib_a - self.local_minimum_b
+                level2 = self.local_minimum_b + 0.5 * diff
+                lower_level = self.local_minimum_b - (1.270 * diff)
+
+                return self.local_minimum_b, level2, lower_level, flag_a
+        return self.local_minimum_b, level2, lower_level, flag_a
