@@ -34,7 +34,7 @@ class UpperFibFindABCD:
 
     def find_b(self, z, volatility, local_minimum_upfib_a):
         """
-        Find fractal low after finding fractal high in previous function to mark down 'B' in fibonacci ABCD swing
+        Find fractal high after finding fractal low in previous function to mark down 'B' in fibonacci ABCD swing
         """
         i = 2  # initialize a variable to 2 for the calculation of fractal high (calculation can be seen in the main
         # log part of the code
@@ -195,6 +195,11 @@ class DownFibABCD:
         return self.local_maximum_a, flag_a
 
     def find_b(self, z, volatality, local_maximum_downfib_a):
+
+        """
+        Find fractal low after finding fractal high in previous function to mark down 'B' in fibonacci ABCD swing
+        """
+
         flag_a = 1
         if len(z) >= 5:
             z = z[-5:]
@@ -209,7 +214,6 @@ class DownFibABCD:
                 if ((z[i + 1]) - (z[i]) > 0) and ((z[i + 2]) - (z[i]) > 0):
                     # print("Found down fib b") #####################
                     self.local_minimum_b = z[i]
-                    # print(self.local_minimum_b) #############
                     flag_a = 2
 
                     diff = local_maximum_downfib_a - self.local_minimum_b
