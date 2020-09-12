@@ -205,10 +205,13 @@ class DownFibABCD:
             z = z[-5:]
         elif len(z) < 5:
             return self.local_minimum_b, flag_a
-        # flag = 5
-        level2 = 0
-        lower_level = 0
+
+        level2 = 0  # initialize variable
+        lower_level = 0  # initialize variable
         i = 2
+
+        # ===== main code =====
+
         if z[-1] < (local_maximum_downfib_a + (volatality * 1.5)):
             if ((z[i]) - (z[i - 1]) < 0) and ((z[i]) - (z[i - 2]) < 0):
                 if ((z[i + 1]) - (z[i]) > 0) and ((z[i + 2]) - (z[i]) > 0):
