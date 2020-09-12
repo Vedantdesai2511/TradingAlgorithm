@@ -216,7 +216,7 @@ class DownFibABCD:
             if ((z[i]) - (z[i - 1]) < 0) and ((z[i]) - (z[i - 2]) < 0):
                 if ((z[i + 1]) - (z[i]) > 0) and ((z[i + 2]) - (z[i]) > 0):
                     # print("Found down fib b") #####################
-                    self.local_minimum_b = z[i]
+                    self.local_minimum_b = z[i]  # save the fractal low value to the variable and return that variable
                     flag_a = 2
 
                     diff = local_maximum_downfib_a - self.local_minimum_b
