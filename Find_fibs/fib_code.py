@@ -245,6 +245,10 @@ class DownFibABCD:
                     # print("C found") ######################
                     flag_a = 3
 
+                elif z[i] > local_maximum:
+                    # print("Fib broke") ######################
+                    flag_a = 0
+
                 return self.local_maximum_C, flag_a
             return self.local_maximum_C, flag_a
         return self.local_maximum_C, flag_a
