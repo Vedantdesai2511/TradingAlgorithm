@@ -231,6 +231,12 @@ class DownFibABCD:
         i = 2
         flag_a = 2
 
+        if self.c_below_b_flag == 1:
+            print("Current price was above a B")
+            print("will go to 1.270")
+            flag_a = 0
+            return self.local_maximum_C, flag_a
+
         if ((z[i]) - (z[i - 1]) > 0) and ((z[i]) - (z[i - 2]) > 0):
             if ((z[i + 1]) - (z[i]) < 0) and ((z[i + 2]) - (z[i]) < 0):
                 if level2 < z[i] < local_maximum:
