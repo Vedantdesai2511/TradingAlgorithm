@@ -249,6 +249,16 @@ class DownFibABCD:
                     # print("Fib broke") ######################
                     flag_a = 0
 
+                elif level2 > z[i] > local_minimum:
+                    pass
+                    # print("searching for a good c") ######################
+
+                elif z[i] < local_minimum:
+                    # print("Below B") ###################
+                    # print("will go to 1.270") ###############
+                    # print("sell now") #################
+                    flag_a = 0
+
                 return self.local_maximum_C, flag_a
             return self.local_maximum_C, flag_a
         return self.local_maximum_C, flag_a
