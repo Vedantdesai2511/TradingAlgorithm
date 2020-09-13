@@ -241,22 +241,22 @@ class DownFibABCD:
             if ((z[i + 1]) - (z[i]) < 0) and ((z[i + 2]) - (z[i]) < 0):
                 if level2 < z[i] < local_maximum:
                     self.local_maximum_C = z[i]
-                    # print("Found down fib c") ######################
-                    # print("C found") ######################
+                    # print("Found down fib c")
+                    # print("C found")
                     flag_a = 3
 
                 elif z[i] > local_maximum:
-                    # print("Fib broke") ######################
+                    # print("Fib broke")
                     flag_a = 0
 
                 elif level2 > z[i] > local_minimum:
                     pass
-                    # print("searching for a good c") ######################
+                    # print("searching for a good c")
 
                 elif z[i] < local_minimum:
-                    # print("Below B") ###################
-                    # print("will go to 1.270") ###############
-                    # print("sell now") #################
+                    # print("Below B")
+                    # print("will go to 1.270")
+                    # print("sell now")
                     flag_a = 0
 
                 return self.local_maximum_C, flag_a
