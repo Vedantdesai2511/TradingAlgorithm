@@ -276,4 +276,11 @@ class DownFibABCD:
         else:
             return False
 
+    def find_d(self, current_price, level2, lower_level, local_maximum):
+        flag_a = 3
+        # print("Ummmm yo")
+        if lower_level < current_price < level2:
+            # print("no D found") ######################
+            print(current_price)
+        return flag_a
 
