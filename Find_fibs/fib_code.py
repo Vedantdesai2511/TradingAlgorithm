@@ -135,7 +135,7 @@ class UpperFibFindABCD:
 
         """
         This function tracks value at each ticker and notifies what the value is doing after making fractal low
-        within the A-B boundary
+        for location of D
         """
 
         flag_a = 3  # flag for algorithm to know where it is at the moment
@@ -277,8 +277,13 @@ class DownFibABCD:
             return False
 
     def find_d(self, current_price, level2, lower_level, local_maximum):
+
+        """
+        This function tracks value at each ticker and notifies what the value is doing after making fractal high
+        for location of D
+        """
         flag_a = 3
-        # print("Ummmm yo")
+
         if lower_level < current_price < level2:
             # print("no D found") ######################
             print(current_price)
