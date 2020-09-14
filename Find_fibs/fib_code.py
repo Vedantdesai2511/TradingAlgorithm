@@ -282,5 +282,11 @@ class DownFibABCD:
         if lower_level < current_price < level2:
             # print("no D found") ######################
             print(current_price)
+        elif current_price < lower_level:
+            self.local_minimum_d = current_price
+            flag_a = 0
+            # print("fib completed") ######################
+            # print("Book the profit") ######################
+            return flag_a
         return flag_a
 
