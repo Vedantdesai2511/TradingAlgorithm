@@ -263,3 +263,17 @@ class DownFibABCD:
             return self.local_maximum_C, flag_a
         return self.local_maximum_C, flag_a
 
+    def find_if_c_is_below_b(self, current_price, local_minimum, flag_a):
+        if flag_a == 2:
+            if current_price < local_minimum:
+                print("Below B")
+                print("will go to 1.270")
+                print(f'sell now- current price: {current_price}')
+                self.c_below_b_flag = 1
+                return True
+            else:
+                return False
+        else:
+            return False
+
+
