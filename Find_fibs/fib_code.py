@@ -282,6 +282,7 @@ class DownFibABCD:
         This function tracks value at each ticker and notifies what the value is doing after making fractal high
         for location of D
         """
+
         flag_a = 3
 
         if lower_level < current_price < level2:
@@ -301,4 +302,3 @@ class DownFibABCD:
             flag_a = 0
             return flag_a
         return flag_a
-
