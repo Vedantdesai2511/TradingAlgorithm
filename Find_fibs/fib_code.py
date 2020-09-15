@@ -228,6 +228,14 @@ class DownFibABCD:
         return self.local_minimum_b, level2, lower_level, flag_a
 
     def find_c(self, z, level2, local_maximum, local_minimum):
+
+        """
+            This side takes tick data as an input and finds the fractal high in between AB boundary in down ABCD swing in
+            the data given
+            input: array of five flots
+            return: float (Value of fractal low)
+        """
+
         i = 2
         flag_a = 2
 
