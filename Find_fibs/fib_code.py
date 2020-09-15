@@ -272,6 +272,13 @@ class DownFibABCD:
         return self.local_maximum_C, flag_a
 
     def find_if_c_is_below_b(self, current_price, local_minimum, flag_a):
+
+        """
+            This function tracks value at each ticker and notifies if the value went below B without making fractal low
+            withing A-B boundary
+            return: bool (if value is above B or not)
+        """
+        
         if flag_a == 2:
             if current_price < local_minimum:
                 print("Below B")
