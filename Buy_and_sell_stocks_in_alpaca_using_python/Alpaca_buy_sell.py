@@ -101,6 +101,11 @@ class AlpacaBuySell:
         return api_buy
 
     def stop_limit_buy_order(self, limit_price, stop_price):
+
+        """
+            place market buy order along with take profit and stop limit order
+        """
+
         api = tradeapi.REST(
             base_url=self.base_url,
             key_id=self.api_key_id,
