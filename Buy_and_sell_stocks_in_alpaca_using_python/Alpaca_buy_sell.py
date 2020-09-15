@@ -30,9 +30,8 @@ class AlpacaBuySell:
     def naked_buy_order(self):  # Place a naked buy order
 
         """
-           Place market buy order with limit and stop (OCO) orders
-           i.e. place market order along with take profit and stop limit order
-       """
+            place a naked buy order i.e. place a market buy order without any limit or stop sell order
+        """
 
         api = tradeapi.REST(
             base_url=self.base_url,
@@ -54,7 +53,8 @@ class AlpacaBuySell:
     def buy(self, limit, stop):  # Place market buy order with limit and stop (OCO) orders
 
         """
-            Place buy with stop loss order
+            Place market buy order with limit and stop (OCO) orders
+            i.e. place market order along with take profit and stop limit order
         """
 
         api = tradeapi.REST(
@@ -77,6 +77,11 @@ class AlpacaBuySell:
         return api_buy
 
     def buy_and_stop_order(self, stop):  # Place buy with stop loss order
+
+        """
+            Place buy with stop loss order
+        """
+
         api = tradeapi.REST(
             base_url=self.base_url,
             key_id=self.api_key_id,
