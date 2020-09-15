@@ -14,7 +14,11 @@ class AlpacaBuySell:
         self.order_type = order_type  # Order type
         self.time_in_force = time_in_force  # Time in force
 
-    def api_call(self):  # This function uses api call to get to the endpoint from which user can buy/sell stocks
+    def api_call(self):
+        """
+            This function uses api call to get to the endpoint from which user can buy/sell stocks
+        """
+
         api = tradeapi.REST(
             base_url=self.base_url,
             key_id=self.api_key_id,
@@ -24,6 +28,7 @@ class AlpacaBuySell:
         return api
 
     def naked_buy_order(self):  # Place a naked buy order
+
         api = tradeapi.REST(
             base_url=self.base_url,
             key_id=self.api_key_id,
