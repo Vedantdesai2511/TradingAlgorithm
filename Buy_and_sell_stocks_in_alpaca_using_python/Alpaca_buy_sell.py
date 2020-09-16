@@ -196,6 +196,10 @@ class AlpacaBuySell:
         return api_sell
 
     def short_sell(self):
+        """
+        Place short sell order on the given stock
+        Caution: If the broken does not allow shorting on the given stock you will not be able to short that stock.
+        """
         api = tradeapi.REST(
             base_url=self.base_url,
             key_id=self.api_key_id,
