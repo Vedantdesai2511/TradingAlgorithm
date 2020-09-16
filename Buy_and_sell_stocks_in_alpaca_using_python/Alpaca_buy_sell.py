@@ -299,6 +299,10 @@ class AlpacaBuySell:
                     print("ORDER FAILED: Your Order was Rejected!!!")
 
     def liqidate_position_of_a_stock(self):
+        """
+            This function liquidates the naked position of the specified stock
+        """
+
         api = tradeapi.REST(
             base_url=self.base_url,
             key_id=self.api_key_id,
