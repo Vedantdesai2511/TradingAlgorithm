@@ -257,6 +257,10 @@ class AlpacaBuySell:
                 return True
 
     def liqidate_positions(self):
+        """
+            This function liquidates all the naked orders present in the current account (portfolio)
+        """
+
         api = tradeapi.REST(
             base_url=self.base_url,
             key_id=self.api_key_id,
