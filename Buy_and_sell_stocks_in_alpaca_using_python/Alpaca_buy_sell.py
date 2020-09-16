@@ -218,6 +218,9 @@ class AlpacaBuySell:
         return api_sell
 
     def limit_sell(self, limit):
+        """
+        place market order along with take profit and stop limit order
+        """
         api = tradeapi.REST(
             base_url=self.base_url,
             key_id=self.api_key_id,
@@ -236,6 +239,10 @@ class AlpacaBuySell:
         return api_sell
 
     def current_positions(self):
+        """
+        
+        """
+
         api = tradeapi.REST(
             base_url=self.base_url,
             key_id=self.api_key_id,
