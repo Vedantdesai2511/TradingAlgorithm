@@ -239,6 +239,9 @@ class AlpacaBuySell:
         return api_sell
 
     def current_positions(self):
+        """
+            This function return all the open portions (not orders) in the given account
+        """
         api = tradeapi.REST(
             base_url=self.base_url,
             key_id=self.api_key_id,
