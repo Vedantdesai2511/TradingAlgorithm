@@ -125,6 +125,9 @@ class AlpacaBuySell:
         return api_buy
 
     def stop_limit_sell_order(self, limit, stop):  # place market sell order take profit and stop limit order
+        """
+        place market sell order take profit and stop limit order
+        """
         api = tradeapi.REST(
             base_url=self.base_url,
             key_id=self.api_key_id,
@@ -147,6 +150,10 @@ class AlpacaBuySell:
 
     def stop_limit_buy_order_without_making_a_market_buy(self, limit, stop):  # Place stop and limit (OCO) orders
         # without placing a buy order for this to work one must have a open naked buy order
+        """
+        Place stop and limit (OCO) orders
+        without placing a buy order for this to work one must have a open naked buy order
+        """
         api = tradeapi.REST(
             base_url=self.base_url,
             key_id=self.api_key_id,
