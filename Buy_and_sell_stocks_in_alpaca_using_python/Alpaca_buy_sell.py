@@ -239,10 +239,6 @@ class AlpacaBuySell:
         return api_sell
 
     def current_positions(self):
-        """
-        
-        """
-
         api = tradeapi.REST(
             base_url=self.base_url,
             key_id=self.api_key_id,
