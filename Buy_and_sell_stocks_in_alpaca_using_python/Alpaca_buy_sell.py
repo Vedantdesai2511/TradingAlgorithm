@@ -175,6 +175,9 @@ class AlpacaBuySell:
 
     def market_sell(self):  # Redundant function due to some dependancy I did not remove it but you can use short
         # sell instead of this function
+        """
+        Place market sell order - to close out the long position in particular stock
+        """
         api = tradeapi.REST(
             base_url=self.base_url,
             key_id=self.api_key_id,
