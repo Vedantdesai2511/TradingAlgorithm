@@ -104,14 +104,8 @@ class AlpacaBuySell:
         """
         place market sell order take profit and stop limit order
         """
-        api = tradeapi.REST(
-            base_url=self.base_url,
-            key_id=self.api_key_id,
-            secret_key=self.api_secret
-        )
-        # place market sell order take profit and stop limit order
 
-        api_stop_limit_sell = api.submit_order(
+        api_stop_limit_sell = AlpacaBuySell(self.symbol).api_call().submit_order(
             symbol=self.symbol,
             qty=self.qty,
             side='sell',
