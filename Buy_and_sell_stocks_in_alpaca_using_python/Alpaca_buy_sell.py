@@ -33,13 +33,7 @@ class AlpacaBuySell:
             place a naked buy order i.e. place a market buy order without any limit or stop sell order
         """
 
-        api = tradeapi.REST(
-            base_url=self.base_url,
-            key_id=self.api_key_id,
-            secret_key=self.api_secret
-        )
-        # lace a naked buy order i.e. place a market buy order without any limit or stop sell order
-        naked_buy_order = api.submit_order(
+        naked_buy_order = AlpacaBuySell(self.symbol).api_call().submit_order(
             symbol=self.symbol,
             qty=self.qty,
             side='buy',
