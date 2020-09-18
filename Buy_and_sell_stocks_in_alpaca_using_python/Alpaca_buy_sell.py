@@ -70,13 +70,7 @@ class AlpacaBuySell:
             Place buy with stop loss order
         """
 
-        api = tradeapi.REST(
-            base_url=self.base_url,
-            key_id=self.api_key_id,
-            secret_key=self.api_secret
-        )
-        # place market order along with take profit and stop limit order
-        api_buy = api.submit_order(
+        api_buy = AlpacaBuySell(self.symbol).api_call().submit_order(
             symbol=self.symbol,
             qty=self.qty,
             side='buy',
