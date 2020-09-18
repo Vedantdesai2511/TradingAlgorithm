@@ -148,7 +148,7 @@ class AlpacaBuySell:
         """
         Place market sell order - to close out the long position in particular stock
         """
-        
+
         api_sell = AlpacaBuySell(self.symbol).api_call().submit_order(
             symbol=self.symbol,
             qty=self.qty,
@@ -165,13 +165,8 @@ class AlpacaBuySell:
         Place short sell order on the given stock
         Caution: If the broken does not allow shorting on the given stock you will not be able to short that stock.
         """
-        api = tradeapi.REST(
-            base_url=self.base_url,
-            key_id=self.api_key_id,
-            secret_key=self.api_secret
-        )
-        # place market order along with take profit and stop limit order
-        api_sell = api.submit_order(
+        
+        api_sell = AlpacaBuySell(self.symbol).api_call().submit_order(
             symbol=self.symbol,
             qty=self.qty,
             side='sell',
