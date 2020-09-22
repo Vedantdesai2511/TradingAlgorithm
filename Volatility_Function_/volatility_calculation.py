@@ -8,7 +8,8 @@ stock_name_list = ["SRNE", "ROKU", "OMER"]
 
 
 def volatility_calculation_(stock_name_lst):
-
+    # TODO: added a full function of volatility calulation rather than
+    # TODO: having parts of code all around the places
     string_for_alpaca = ""
 
     for value in stock_name_list:
