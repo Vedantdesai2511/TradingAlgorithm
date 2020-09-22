@@ -1,8 +1,10 @@
-import load_data_test
+# import load_data_test
 import config
 import requests
 import pandas as pd
 import numpy as np
+
+stock_name_list = ["SRNE", "ROKU", "OMER"]
 
 
 def volatility_calculation_(stock_name_lst):
@@ -10,7 +12,7 @@ def volatility_calculation_(stock_name_lst):
     # TODO: having parts of code all around the places
     string_for_alpaca = ""
 
-    for value in load_data_test.stock_name_list:
+    for value in stock_name_list:
         string_for_alpaca = string_for_alpaca + value + ','
 
     print(string_for_alpaca[:-1])
@@ -48,8 +50,8 @@ def volatility_calculation_(stock_name_lst):
 
         volatility = b.std() * 100
 
-        load_data_test.Dict_one[stock_name]["volatility"] = volatility
-        print(f'Dict_one[stock_name]["volatility"]: {load_data_test.Dict_one[stock_name]["volatility"]}')
+        # load_data_test.Dict_one[stock_name]["volatility"] = volatility
+        # print(f'Dict_one[stock_name]["volatility"]: {load_data_test.Dict_one[stock_name]["volatility"]}')
 
         df = pd.DataFrame.from_dict(data2[stock_name])
         z = df["c"]
@@ -64,16 +66,16 @@ def volatility_calculation_(stock_name_lst):
 
         # print(f'volatility of {stock_name}: {volatility}')
 
-        load_data_test.Dict_five[stock_name]["volatility"] = volatility
-        print(f'Dict_five[stock_name]["volatility"]: of {stock_name} - '
-              f'{load_data_test.Dict_five[stock_name]["volatility"]}')
+        # load_data_test.Dict_five[stock_name]["volatility"] = volatility
+        # print(f'Dict_five[stock_name]["volatility"]: of {stock_name} - '
+        #       f'{load_data_test.Dict_five[stock_name]["volatility"]}')
 
     def volatality_calculation_function(stock_names):
         # print("Heya")  # print statement for debugging purposes
         for stock in stock_names:
             volatility_calculation(stock)
-            print(f'Dict_five: {load_data_test.Dict_five}')
-            print(f'Dict_one: {load_data_test.Dict_one}')
+            # print(f'Dict_five: {load_data_test.Dict_five}')
+            # print(f'Dict_one: {load_data_test.Dict_one}')
 
     volatality_calculation_function(stock_name_lst)
 
